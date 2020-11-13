@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreditCard
+namespace CreditCardSpace
 {
     public class CreditCard
     {
@@ -66,5 +66,11 @@ namespace CreditCard
             return credit_card_number;
         }
 
+
+        public override string ToString()
+        {
+            return $"Card: {this.GetCardNumber()}  Sum: {this.money.getAccount()}";
+        }
+       
     }
 }
