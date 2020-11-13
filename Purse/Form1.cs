@@ -21,33 +21,47 @@ namespace Purse
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            CreditCardForm creditCard = new CreditCardForm();
-            var res = creditCard.ShowDialog();
-            if (res == DialogResult.Cancel)
+            try
             {
-                return;
+                CreditCardForm creditCard = new CreditCardForm();
+                var res = creditCard.ShowDialog();
+                if (res == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+
+
+                if (creditCard.textBox1.Text != "" && creditCard.textBox2.Text != "")
+                {
+                    CreditCard card = new CreditCard(creditCard.textBox1.Text, (double)creditCard.numericUpDown1.Value, Convert.ToDouble(creditCard.textBox2.Text));
+                    listBox1.Items.Add(card);
+                }
             }
-
-
-
-            if (creditCard.textBox1.Text != "" && creditCard.textBox2.Text != "")
+            catch (Exception ex)
             {
-                CreditCard card = new CreditCard(creditCard.textBox1.Text, (double)creditCard.numericUpDown1.Value, Convert.ToDouble(creditCard.textBox2.Text));
-                listBox1.Items.Add(card);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            BusinessCardForm form = new BusinessCardForm();
-            var res = form.ShowDialog();
-            if (res == DialogResult.Cancel)
-                return;
-
-            if (form.textBox1.Text != "" && form.textBox2.Text != "" && form.textBox3.Text != "" && form.textBox4.Text != "")
+            try
             {
-                BusinessCard card = new BusinessCard(form.textBox1.Text, form.textBox2.Text, form.textBox3.Text, Convert.ToDouble(form.textBox4.Text));
-                listBox2.Items.Add(card);
+                BusinessCardForm form = new BusinessCardForm();
+                var res = form.ShowDialog();
+                if (res == DialogResult.Cancel)
+                    return;
+
+                if (form.textBox1.Text != "" && form.textBox2.Text != "" && form.textBox3.Text != "" && form.textBox4.Text != "")
+                {
+                    BusinessCard card = new BusinessCard(form.textBox1.Text, form.textBox2.Text, form.textBox3.Text, Convert.ToDouble(form.textBox4.Text));
+                    listBox2.Items.Add(card);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
