@@ -17,6 +17,14 @@ namespace MoneySpace
             account = 0;
         }
 
+        public void setAccount(double sum)
+        {
+            if (this.account == 0)
+            {
+                this.account = sum;
+            }
+        }
+
         public double getAccount()
         {
             return account;
